@@ -1,0 +1,46 @@
+name: C# Build and Test
+
+on:
+  push:
+    branches: [ main, solution ]
+    paths:
+      - 'csharp/**'
+      - '.github/workflows/csharp-build-test.yml'
+  pull_request:
+    branches: [ main, solution ]
+    paths:
+      - 'csharp/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: [ '10.0.x' ]
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up .NET ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: csharp
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+        working-directory: csharp
+
+      - name: Test
+        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+        working-directory: csharp
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: csharp-test-results
+          path: csharp/TestResults/

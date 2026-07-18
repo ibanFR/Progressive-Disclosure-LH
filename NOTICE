@@ -1,0 +1,41 @@
+NOTICE
+======
+
+This repository contains code and documentation from multiple sources, each under the MIT License or Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License. Please see below for attribution and licensing details.
+
+1. Encode Refactoring Kata
+--------------------------
+- Copyright (c) 2018 Emily Bache
+- License: MIT
+- Source: https://github.com/emilybache/Encode-TestDesign-Kata
+- Location: All source code and files except where otherwise noted
+
+2. Just the Docs (Theme)
+------------------------
+- Copyright (c) 2022 just-the-docs
+- License: MIT
+- Location: site/ directory source files
+- License file: site/LICENSE
+
+3. Site Documentation
+---------------------
+- Copyright (c) 2026 Iván Fernández
+- License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+- Location: site/ directory and any site documentation files
+- License file: LICENSE-CC-BY-SA-4.0
+
+4. Modifications
+----------------
+- Modifications and additions to the original codebases are copyright (c) 2026 Iván Fernández, and are also licensed under the MIT License.
+
+5. License Texts
+----------------
+- The full text of the MIT License is provided in LICENSE (for the Encode Refactoring Kata and for modifications and additions of source code) and site/LICENSE (for just-the-docs).
+- The full text of the Creative Commons Attribution-ShareAlike 4.0 International License is provided in LICENSE-CC-BY-SA-4.0.
+
+6. Additional Notes
+-------------------
+- All original copyright and license notices have been preserved.
+- If you use or redistribute this repository, please retain this NOTICE file and the original license files.
+
+For more information, see the README.md and the respective license files.
