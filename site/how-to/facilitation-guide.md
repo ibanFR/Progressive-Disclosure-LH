@@ -23,7 +23,7 @@ order. The session follows the [Learning Hour](https://sammancoaching.org/refere
 
 ---
 
-## Progressive Disclosure
+## Progressive Disclosure — Title Slide
 
 **Role:** Title / welcome slide · **Phase:** Intro · **⏱️ 2 min**
 
@@ -95,7 +95,7 @@ teams with no such documentation (source: the
 
 ---
 
-## The Agent Loop
+## The Agent Loop (1 of 2)
 
 **Phase:** Concept · **⏱️ 4 min**
 
@@ -122,7 +122,7 @@ coding agent actually works before introducing the context window.
 
 ---
 
-## The Agent Loop
+## The Agent Loop (2 of 2)
 
 **Phase:** Concept · **⏱️ 4 min**
 
@@ -194,7 +194,7 @@ they'll practice.
 
 ---
 
-## Progressive Disclosure
+## Progressive Disclosure — Core Concept
 
 **Phase:** Concept (the core idea, visualised) · **⏱️ 3 min**
 
