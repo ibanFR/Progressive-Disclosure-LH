@@ -1,7 +1,8 @@
 ---
 title: Facilitation Guide
 layout: default
-nav_order: 2
+parent: How-to Guides
+nav_order: 1
 ---
 
 # Facilitation Guide
