@@ -43,10 +43,12 @@ See [Conclusions Activities](https://sammancoaching.org/activities/conclusions.h
 the learning experience and draw conclusions.
 
 
-[Learning Hour]: https://sammancoaching.org/reference/learning_hour_definition.html
-[Connect Activities]: https://sammancoaching.org/activities/connect.html
-[Concept Activities]: https://sammancoaching.org/activities/concept.html
-[Concrete Practice Activities]: https://sammancoaching.org/activities/concrete.html
-[Conclusions Activities]: https://sammancoaching.org/activities/conclusions.html
-[Samman Coaching]: https://sammancoaching.org/
+## References
+
+- [Learning Hour](https://sammancoaching.org/reference/learning_hour_definition.html)
+- [Connect Activities](https://sammancoaching.org/activities/connect.html)
+- [Concept Activities](https://sammancoaching.org/activities/concept.html)
+- [Concrete Practice Activities](https://sammancoaching.org/activities/concrete.html)
+- [Conclusions Activities](https://sammancoaching.org/activities/conclusions.html)
+- [Samman Coaching](https://sammancoaching.org/)
 
