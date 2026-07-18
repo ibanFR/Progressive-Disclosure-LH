@@ -28,17 +28,17 @@ By the end of the hour, participants can:
 
 ## Connect — What goes in `AGENTS.md`? (⏱️ 5 min)
 
-Surface what the team already knows before explaining anything.
+Surface what the team already knows before explaining anything, using the [Three Facts](https://sammancoaching.org/activities/connect/three_facts.html) Samman Connect activity.
 
-**Prompt:** *"What kinds of information do you put in `AGENTS.md`? Give three examples."*
+**Prompt:** *"Write three kinds of information you put — or would put — in `AGENTS.md`."*
 
-- Everyone adds sticky notes (individually or in pairs) with concrete examples — ~2 min to write, then cluster and read aloud.
+- Everyone adds sticky notes (individually or in pairs) with three concrete examples each — ~2 min to write, then cluster and read aloud.
 - Don't evaluate answers yet; the goal is to activate prior knowledge and expose the range.
 - Expect: coding standards, commit conventions, architectural constraints, refactoring patterns, pointers to more specific docs, project context and goals, repo layout, build/TDD instructions.
 
 **Bridge:** Notice how *long* this list is getting — hold that thought.
 
-See [Connect Activities](https://sammancoaching.org/activities/connect.html) for more ideas.
+See the full list of [Connect Activities](https://sammancoaching.org/activities/connect.html) for alternatives.
 
 ## Concept — Why keep `AGENTS.md` short? (⏱️ 12 min)
 

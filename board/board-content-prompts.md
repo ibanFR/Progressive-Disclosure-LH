@@ -69,3 +69,29 @@ Record of the prompts used in this session, plus brief output notes captured dur
 ### Output produced
 
 - Rewrote [`site/index.md`](../site/index.md) as the **Progressive Disclosure** Learning Hour (#GLH053 by Emily Bache), following the seven-phase sequence requested (Connect → Concept → Concrete → Concept → Concrete → Concept → Conclusions) rather than the plain four-phase template. Content sourced from [`site/how-to/facilitation-guide.md`](../site/how-to/facilitation-guide.html) (which already held the frame-by-frame board content), with format, timing conventions, and references taken from the existing `index.md` template. No Miro calls were needed — the facilitation guide provided sufficient context. The page remains the site's `layout: home` landing page.
+
+## Follow-up session (2026-07-18)
+
+18. commit this
+
+19. preview the site locally
+
+20. yes, fix that link spacing
+
+21. compare this learning hour to https://github.com/ibanFR/introduction-to-nullables-LH and https://github.com/ibanFR/semantic-release-kata.
+
+22. compare session content
+
+23. update the connect section. reference to explicit activities from connect activities, e.g. describe your experience.
+
+24. update so it just references three facts.
+
+25. add your last prompts to @board/board-content-prompts.md
+
+### Output produced
+
+- Committed the Learning Hour rewrite and prompt log as `32c94a5` ("Rewrite index.md as Progressive Disclosure Learning Hour"); left the pre-existing unstaged change to `site/how-to/facilitation-guide.md` untouched.
+- Previewed the site locally via `site/start_local_server.sh` (Jekyll + live reload) at http://localhost:4000/ — clean build (only Sass deprecation warnings), page renders with the seven phase headings and auto-generated TOC.
+- Fixed stray whitespace in the Connect Activities link on `site/index.md` (leading spaces inside the URL and a space in the path).
+- Compared this Learning Hour against [`introduction-to-nullables-LH`](https://github.com/ibanFR/introduction-to-nullables-LH) and [`semantic-release-kata`](https://github.com/ibanFR/semantic-release-kata) — first on repo structure/conventions, then on session content (learning goals, phase rhythm, Connect/Concept/Concrete/Conclusions design). Key finding: PD is the only one that interleaves concept↔practice; Nullables has the strongest reflective/timeboxed debrief loop. Analysis delivered in chat, not written to a file.
+- Updated the Connect section of `site/index.md` to reference explicit named Samman Connect activities — first added [Describe Your Experience](https://sammancoaching.org/activities/connect/your_experience.html) + [Three Facts](https://sammancoaching.org/activities/connect/three_facts.html), then narrowed it to reference **only [Three Facts](https://sammancoaching.org/activities/connect/three_facts.html)** per follow-up.
