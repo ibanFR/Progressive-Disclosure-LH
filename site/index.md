@@ -44,7 +44,7 @@ See the full list of [Connect Activities](https://sammancoaching.org/activities/
 
 Three linked ideas build the motivation for progressive disclosure.
 
-**1. Design advice.** **100–150 lines is optimal** for `AGENTS.md`. A well-written one can deliver value comparable to a model upgrade — the best files improve agent performance by roughly **10–15%** over teams with no such documentation (source: the [Augment Code blog](https://www.augmentcode.com/)). Tie back to Connect: the group just generated *far more* than 150 lines' worth of ideas.
+**1. Design advice.** **100–150 lines is optimal** for `AGENTS.md`. A well-written one can deliver value comparable to a model upgrade — the best files improve agent performance by roughly **10–15%** over teams with no such documentation (source: the [Augment Code blog](https://www.augmentcode.com/)).
 
 **2. The Agent Loop.** Name the three components — the **Agent** (orchestrator), the **LLM** (reasoning), and **Tool Calls** (actions). The loop is *iterative* (the agent may call tools many times before returning). Crucially, on **every** iteration the harness injects `AGENTS.md` + the system prompt + the full conversation history into the LLM. Nothing is free — a bloated `AGENTS.md` is paid for on every pass, not once.
 
