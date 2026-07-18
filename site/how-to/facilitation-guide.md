@@ -227,7 +227,8 @@ Commit Message Advice, and `AGENTS.md` itself.
 The hands-on coding exercise. Participants practise using different knowledge documents with a
 short prompt.
 
-**Repository:** [Encode-TestDesign-Kata](https://github.com/emilybache) (by emilybache).
+**Repository:** [Progressive-Disclosure-LH](https://github.com/ibanFR/Progressive-Disclosure-LH)
+(based on the [Encode-TestDesign-Kata](https://github.com/emilybache/Encode-TestDesign-Kata) by Emily Bache).
 
 **Core prompt:** *"Improve the design of this code."*
 

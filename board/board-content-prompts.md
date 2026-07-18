@@ -39,7 +39,7 @@ Verbatim record of the user's prompts in this session.
 
 10. commit this
 
-11. Read @site/index.md . this is a template for a Samman Learning Hour. Use the template for writting a Learning Hour based on this facilitated session in Miro: https://miro.com/app/board/uXjVHPh12To=/. Read all resources on the template as context.
+11. Read @site/index.md . this is a template for a Samman Learning Hour. Use the template for writing a Learning Hour based on this facilitated session in Miro: https://miro.com/app/board/uXjVHPh12To=/. Read all resources on the template as context.
 
 12. add the prompts of this session to @board/board-content-prompts.md
 
