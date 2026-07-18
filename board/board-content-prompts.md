@@ -57,3 +57,15 @@ Record of the prompts used in this session, plus brief output notes captured dur
 ### Output produced
 
 - Wrote [`site/facilitation-guide.md`](../site/facilitation-guide.md) — a frame-by-frame facilitation guide for the **Progressive Disclosure** Learning Hour (#GLH053 by Emily Bache), one section per Miro frame using the frame title as the H2 heading. Sections are ordered by the board's left-to-right layout (title → Connect → Design advice → two Agent Loop frames → Context Window → Demo → Progressive Disclosure → Exercise → Skills → Conclusions → Feedback), each with phase, suggested timing, prompts, how-to-run steps, and facilitator notes. Frame content pulled via the Miro MCP tools (`context_explore` + `context_get`); the Feedback frame is treated as a facilitator prep resource rather than a live slide. Added as a `just-the-docs` page with `nav_order: 2` and an auto-generated TOC.
+
+## Follow-up session (2026-07-18)
+
+15. write a Samman Learning hour for "Progressive Disclosure". Read sources from @site/index.md as context. use @site/how-to/facilitation-guide.md for guiding the structure, phases: connect, concept, concrete, concept, concrete, concept, conclusions. Use miro tools if you need more context.
+
+16. the index page should be the learning hour, leave it as is
+
+17. add the prompt used to @board/board-content-prompts.md
+
+### Output produced
+
+- Rewrote [`site/index.md`](../site/index.md) as the **Progressive Disclosure** Learning Hour (#GLH053 by Emily Bache), following the seven-phase sequence requested (Connect → Concept → Concrete → Concept → Concrete → Concept → Conclusions) rather than the plain four-phase template. Content sourced from [`site/how-to/facilitation-guide.md`](../site/how-to/facilitation-guide.html) (which already held the frame-by-frame board content), with format, timing conventions, and references taken from the existing `index.md` template. No Miro calls were needed — the facilitation guide provided sufficient context. The page remains the site's `layout: home` landing page.
