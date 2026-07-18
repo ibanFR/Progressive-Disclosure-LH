@@ -1,6 +1,6 @@
-# Session Prompts
+# Session Prompts & Notes
 
-Verbatim record of the user's prompts in this session.
+Record of the prompts used in this session, plus brief output notes captured during the run.
 
 1. can you search for Miro board Progressive Disclosure LH?
 
