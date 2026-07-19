@@ -107,7 +107,7 @@ Retrieve detailed metadata for a single video.
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
 | `videoId` | string | Yes | YouTube video ID (11 characters, found in `youtube.com/watch?v=<ID>`). |
-| `parts` | string[] | No | Response parts to include (e.g., `snippet`, `statistics`, `contentDetails`, `fileDetails`). Defaults to core metadata. |
+| `parts` | string[] | No | Response parts to include (e.g., `snippet`, `statistics`, `contentDetails`). Defaults to core metadata. |
 
 ### Transcripts (1 tool)
 
@@ -217,12 +217,15 @@ Each Google Cloud project receives **10,000 quota units per day** by default. Th
 
 | Operation | Cost (units) | Tools affected |
 |-----------|------|---|
-| `search.list` | 100 | `videos_searchVideos`, `channels_searchChannels`, `channels_findCreators`, `channels_listVideos` (when searching underlying videos) |
+| `search.list` | 100 | `videos_searchVideos`, `channels_searchChannels`, `channels_findCreators` |
 | `videos.list` | 1 | `videos_getVideo` |
 | `channels.list` | 1 | `channels_getChannel`, `channels_getChannels`, hydration in search results |
 | `playlists.list` | 1 | `playlists_getPlaylist` |
 | `playlistItems.list` | 1 | `playlists_getPlaylistItems` |
 | Transcripts via `youtube-transcript` | 0 | `transcripts_getTranscript` (library-based, no Data API call) |
+
+{: .note }
+> The tool → API-method mapping above is approximate: it is inferred from each tool's behaviour and the server's dependencies, not line-verified against the server source. `channels_listVideos`, in particular, may resolve to either a `search.list` (100 units) or a cheaper `playlistItems.list` (1 unit) path depending on the server's implementation. Treat the figures as guidance and measure real quota burn for high-volume use.
 
 ### Cost examples
 

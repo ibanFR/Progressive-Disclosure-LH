@@ -158,7 +158,12 @@ Then update `.mcp.json`:
 }
 ```
 
-At least one key must be set; the others are optional. See the [YouTube MCP Server reference]({% link reference/youtube-mcp-server-reference.md %}) for quota limits and cost details.
+At least one key must be set; the others are optional.
+
+{: .warning }
+> **Only add the `YOUTUBE_API_KEY2`/`YOUTUBE_API_KEY3` lines if you actually export the matching `YOUTUBE_API_TOKEN_2`/`YOUTUBE_API_TOKEN_3` tokens.** When a referenced variable is unset, Claude Code injects the literal text `${YOUTUBE_API_TOKEN_2}` (not an empty value), so the server receives an invalid key and its quota-exhaustion failover will fail when it retries with that slot.
+
+See the [YouTube MCP Server reference]({% link reference/youtube-mcp-server-reference.md %}) for quota limits and cost details.
 
 ## Using the server
 

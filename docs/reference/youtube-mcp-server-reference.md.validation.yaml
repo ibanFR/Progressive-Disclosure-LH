@@ -52,10 +52,10 @@ documentation_review:
       notes: "Tables are dense but scannable. Headings are clear. Parameter names match exactly. Quota section is very clear (costs table, examples). Env-var mapping explained with the gotcha. Finding IDs section is brief and scannable. Sample prompts use consistent placeholder syntax (<VIDEO_ID>, <CHANNEL_ID>, <PLAYLIST_ID>). Readability is appropriately terse for reference (Flesch 50-60 expected for reference)."
     consistency:
       score: 10
-      notes: "Jekyll/Just-the-Docs front-matter preserved. Callout syntax (.note, .warning implied) consistent. Parameter table format consistent across all 10 tools. Cross-links use exact .html relative paths. Terminology aligned across document and with how-to guide (YOUTUBE_API_TOKEN, YOUTUBE_API_KEY, etc.)."
+      notes: "Jekyll/Just-the-Docs front-matter preserved. Callout syntax (.note, .warning implied) consistent. Parameter table format consistent across all 10 tools. Cross-links use the Jekyll {% link %} tag (site-root-relative .md). Terminology aligned across document and with how-to guide (YOUTUBE_API_TOKEN, YOUTUBE_API_KEY, etc.)."
     correctness:
       score: 10
-      notes: "Grammar and spelling correct. No broken links. Cross-link to how-to uses correct relative path ../how-to/youtube-mcp-server-guide.html. Tool names, parameter names, and costs match research exactly."
+      notes: "Grammar and spelling correct. No broken links. Cross-link to how-to uses the Jekyll {% link how-to/youtube-mcp-server-guide.md %} tag. Tool names, parameter names, and costs match research exactly."
     usability:
       score: 10
       notes: "Achieves JTBD perfectly: user can look up any tool's parameters, understand quota costs, find an ID in a YouTube URL, or copy a sample prompt. At-a-glance table front-loads key metadata. Tools are grouped logically. Parameters are ctrl-F friendly. No friction between reference and how-to (cross-links clear)."
@@ -88,7 +88,7 @@ documentation_review:
         appears_in: ["Quota section"]
         target_validated: false
         note: "External link (Google docs); authoritative quota cost source from research Finding 6."
-      - link: "../how-to/youtube-mcp-server-guide.html"
+      - link: "{% link how-to/youtube-mcp-server-guide.md %}"
         appears_in: ["At a glance table (Install guide)", "Appears in all major sections (implicit expectation)"]
         target_validated: true
         target_exists: true
@@ -163,7 +163,7 @@ documentation_assessment_review:
     all_facts_match_research: true
   cross_reference_validation:
     jekyll_front_matter: "INTACT"
-    internal_links: "../how-to/youtube-mcp-server-guide.html (working)"
+    internal_links: "{% link how-to/youtube-mcp-server-guide.md %} (working)"
     all_links_verified: true
   research_alignment_check:
     gap_implementation_verification: "NOTED - extended-params caveat aligns with research Conflict 1"

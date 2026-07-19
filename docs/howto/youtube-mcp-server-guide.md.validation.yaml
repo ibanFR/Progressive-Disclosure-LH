@@ -50,10 +50,10 @@ documentation_review:
       notes: "Clear numbered steps. Warning and note callouts break up text. Env-var gotcha has a dedicated warning section. Variable names consistently used. Readability estimated Flesch 65-75 (appropriate for procedural)."
     consistency:
       score: 10
-      notes: "Jekyll/Just-the-Docs front-matter preserved. Callout syntax matches existing doc conventions. Cross-links use exact .html relative paths to reference. Terminology aligned with research (YOUTUBE_API_TOKEN, YOUTUBE_API_KEY, zubeid-youtube-mcp-server)."
+      notes: "Jekyll/Just-the-Docs front-matter preserved. Callout syntax matches existing doc conventions. Cross-links use the Jekyll {% link %} tag (site-root-relative .md) to reference. Terminology aligned with research (YOUTUBE_API_TOKEN, YOUTUBE_API_KEY, zubeid-youtube-mcp-server)."
     correctness:
       score: 10
-      notes: "Grammar and spelling correct. No broken internal links. Cross-link to reference uses correct relative path ../reference/youtube-mcp-server-reference.html"
+      notes: "Grammar and spelling correct. No broken internal links. Cross-link to reference uses the Jekyll {% link reference/youtube-mcp-server-reference.md %} tag."
     usability:
       score: 9
       notes: "Achieves JTBD: reader can install and verify the server following the steps. Sample prompts provide immediate next actions. Optional fallback section is non-blocking. One minor: 'Using the server' section could be more action-oriented (e.g., 'Step 5 — Try your first query') but samples are clear."
@@ -66,7 +66,7 @@ documentation_review:
 
   cross_reference_validation:
     outbound_links:
-      - link: "../reference/youtube-mcp-server-reference.html"
+      - link: "{% link reference/youtube-mcp-server-reference.md %}"
         appears_in: ["Step 3 context", "Optional section", "Using the server (2 instances)", "What's next"]
         target_validated: true
         target_exists: true
@@ -112,7 +112,7 @@ documentation_assessment_review:
     all_facts_match_research: true
   cross_reference_validation:
     jekyll_front_matter: "INTACT"
-    outbound_links: "../reference/youtube-mcp-server-reference.html (working)"
+    outbound_links: "{% link reference/youtube-mcp-server-reference.md %} (working)"
     all_links_verified: true
   issue_summary: { blocking: 0, high: 0, medium: 0, low: 2 }
   verdict: "APPROVED"
