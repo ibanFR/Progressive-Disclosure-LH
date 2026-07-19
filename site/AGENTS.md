@@ -19,5 +19,5 @@ The rest follow the Diataxis model — one type per page, never mixed:
 
 ## Harnesses
 
-* Read [harness/create-page.md](harness/create-page.md) when creating or updating a page.
+* Read [harness/create-or-update-page.md](harness/create-or-update-page.md) when creating or updating a page.
 * Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
