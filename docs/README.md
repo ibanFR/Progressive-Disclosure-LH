@@ -12,15 +12,18 @@ themselves.
 
 ## What the `/nw-document` pipeline produces
 
-`/nw-document` runs a four-phase pipeline with a peer-review gate at each stage:
+`/nw-document [topic] [--type=tutorial|howto|reference|explanation] [--research-depth=overview|detailed|comprehensive|deep-dive]` is a cross-wave, orchestrator-driven pipeline that produces DIVIO/Diataxis docs with a peer-review gate after research and after writing. `--type` is prompted when omitted; `--research-depth` otherwise defaults per type.
 
 ```
+Phase 0   Pre-flight          (orchestrator)               → validate topic/type/depth, resolve paths
 Phase 1   Research            (nw-researcher)              → docs/research/*.md
-Phase 1.5 Research Review     (nw-researcher-reviewer)     → review block appended
-Phase 2   Documentation       (nw-documentarist)           → site/**/*.md + docs/{howto,reference}/*.validation.yaml
-Phase 2.5 Documentation Review(nw-documentarist-reviewer)  → review block appended
-Phase 3   Handoff
+Phase 1.5 Research Review     (nw-researcher-reviewer)     → verdict: APPROVED | NEEDS_REVISION | REJECTED
+Phase 2   Documentation       (nw-documentarist)           → site/**/*.md + docs/**/*.validation.yaml
+Phase 2.5 Documentation Review(nw-documentarist-reviewer)  → verdict: APPROVED | NEEDS_REVISION | RESTRUCTURE_REQUIRED
+Phase 3   Handoff             (orchestrator)               → report paths, gate results, iteration count
 ```
+
+`NEEDS_REVISION` loops the producer + reviewer (max 2 cycles, then escalates); `REJECTED`/`RESTRUCTURE_REQUIRED` escalates immediately. The skill's default output root is `docs/`; this repo overrides published pages to `site/` and deliberately keeps `.validation.yaml` under `docs/` so Jekyll never serves them.
 
 ## Contents
 
