@@ -4,7 +4,7 @@ This is the **published** Jekyll site (theme: `just-the-docs`) for the Progressi
 
 ## Replies
 
-Stack replies with: 📄
+Stack replies with 📄 when this instruction file is loaded in the context window.
 
 ## Pages
 
