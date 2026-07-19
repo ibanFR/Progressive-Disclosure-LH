@@ -171,7 +171,7 @@ must share.
 
 ## Demo - Progressive Disclosure
 
-**Phase:** Concept → Concrete (live demo) · **⏱️ 5 min**
+**Phase:** Concept (live demo) · **⏱️ 5 min**
 
 A short live coding demo before participants try it themselves. It models the exact workflow
 they'll practice.

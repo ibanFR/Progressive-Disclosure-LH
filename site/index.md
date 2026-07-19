@@ -54,7 +54,7 @@ Three linked ideas build the motivation for progressive disclosure.
 
 See [Concept Activities](https://sammancoaching.org/activities/concept.html) for more ideas.
 
-## Concrete — Live demo (⏱️ 5 min)
+## Concept — Live demo (⏱️ 5 min)
 
 Model the exact workflow participants will practise.
 
