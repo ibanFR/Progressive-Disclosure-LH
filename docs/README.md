@@ -17,7 +17,7 @@ themselves.
 ```
 Phase 1   Research            (nw-researcher)              → docs/research/*.md
 Phase 1.5 Research Review     (nw-researcher-reviewer)     → review block appended
-Phase 2   Documentation       (nw-documentarist)           → site/**/*.md (+ validation)
+Phase 2   Documentation       (nw-documentarist)           → site/**/*.md + docs/{howto,reference}/*.validation.yaml
 Phase 2.5 Documentation Review(nw-documentarist-reviewer)  → review block appended
 Phase 3   Handoff
 ```
