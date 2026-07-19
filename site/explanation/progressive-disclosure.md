@@ -19,13 +19,9 @@ Progressive disclosure is a design principle that keeps essential information vi
 
 ## What is Progressive Disclosure?
 
-Progressive disclosure is a decades-old design principle with roots in both user interface design and instructional design. Jakob Nielsen, co-founder of the Nielsen Norman Group, frames it as a resolution to a fundamental tension: users want both *power* and *simplicity*. His prescription is elegant: "Initially, show users only a few of the most important options. Offer a larger set of specialized options upon request."
+Progressive disclosure is a design principle: show essential options initially, defer specialized ones. Jakob Nielsen frames it as resolving the tension between power and simplicity: "Initially, show users only a few of the most important options. Offer a larger set of specialized options upon request." The mechanism is simple—hiding advanced features reduces cognitive load, and research shows people actually understand systems better when helped to prioritize.
 
-The mechanism is cognitive-load management. By hiding advanced or rarely used features, the design helps novice users avoid mistakes and saves them the mental effort of considering features they don't need. Notably, research shows that people actually understand a system *better* when you help them prioritize — when you help them spend more time on what matters and defer everything else.
-
-A parallel root runs through instructional design. John Carroll's *minimalism*, formalized in the *Minimal Manual* (1987–88), shares the same insight: brevity matters, real tasks matter, exploration matters, and advanced functions should be deferred for beginners. Carroll's "training wheels" interface — temporarily hiding error-prone or specialized functions — reduced learning friction. The concept transfers across 40 years and two domains because the underlying constraint is the same: attention is scarce.
-
-For coding agents, that scarce resource is the context window. `AGENTS.md` *is* documentation-for-an-agent, and the same argument that justified Carroll's minimalism in human manuals justifies progressive disclosure in agent guidance: keep it short, let the reader (or the agent) pull detail on demand.
+For coding agents, this principle applies directly. The scarce resource is not human attention but the context window. `AGENTS.md` *is* documentation-for-an-agent; progressive disclosure keeps it short and lets the agent pull detail on demand. The principle is old—John Carroll's *Minimal Manual* (1987–88) calls this minimalism—and it transfers across contexts because the underlying constraint is the same: scarcity of attention, whether human or tokenized.
 
 ## Why It Matters for Coding Agents
 
