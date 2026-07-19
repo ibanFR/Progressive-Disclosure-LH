@@ -1,3 +1,5 @@
+Stack replies with: 🌊
+
 This directory holds **nWave documentation artifacts** — the research and validation
 outputs produced by the `/nw-document` pipeline. See [README.md](README.md) for what
 lives here and how it maps to the published pages under `site/`.
