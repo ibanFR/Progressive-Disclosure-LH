@@ -1,0 +1,118 @@
+documentation_review:
+  document: site/how-to/youtube-mcp-server-guide.md
+  review_date: "2026-07-19"
+  reviewed_by: "nw-documentarist (Quill)"
+
+  classification:
+    type: "how-to"
+    confidence: "high"
+    type_purity_percent: 90
+    signals:
+      - "Goal statement: 'Set up the youtube MCP server...' — task-focused imperative"
+      - "Prerequisites explicitly state baseline assumptions (know Node.js, export env vars, edit JSON)"
+      - "Four numbered steps with clear completion criteria"
+      - "Step 4 includes verifiable completion indicator (see 'connected' status with 10 tools)"
+      - "Optional section for fallback keys (task extension, not teaching)"
+      - "Using the server section provides natural-language sample prompts, not conceptual essays"
+      - "No extended background on 'what is an MCP server' or 'why YouTube API' — links to reference"
+      - "No comprehensive parameter tables — defers to reference"
+      - "Env-var gotcha prominently flagged as a warning callout (most common error)"
+    evidence_base: "Aligned with How-to canonical JTBD: 'Fix this specific situation right now; accomplish the installation task without preamble'"
+
+  validation:
+    passed: true
+    type_specific_checklist:
+      - item: "Clear goal stated upfront"
+        passed: true
+        note: "Title and intro: 'Set up the youtube MCP server so Claude Code can search YouTube...'"
+      - item: "Assumes fundamentals known"
+        passed: true
+        note: "Prerequisites assume reader knows what an MCP server is, how to export env vars, edit JSON; no glossary needed"
+      - item: "Single task focus"
+        passed: true
+        note: "Focused on installation + optional quota fallback; 'Using the server' section is sample prompts, not task drift"
+      - item: "Ends with completion indicator"
+        passed: true
+        note: "Step 4 verification: check /mcp shows 'youtube connected' with 10 tools"
+      - item: "No basics teaching"
+        passed: true
+        note: "No 'What is an API key' or 'Why use quotas' — task assumes baseline knowledge"
+
+  quality_assessment:
+    accuracy:
+      score: 9
+      notes: "All facts grounded in approved research artifact (v1.0.2, 2026-07-16, Node 18+, 10 tools, env-var mapping, quota fallback keys). Env-var gotcha correctly explained."
+    completeness:
+      score: 9
+      notes: "Covers all essential steps: API key creation, env-var export, config verification, verification via /mcp. Optional fallback keys. Sample prompts. One gap: does not mention 'claude mcp list' as alternative verification (noted in research Finding 9) but included in Step 4 extended notes."
+    clarity:
+      score: 9
+      notes: "Clear numbered steps. Warning and note callouts break up text. Env-var gotcha has a dedicated warning section. Variable names consistently used. Readability estimated Flesch 65-75 (appropriate for procedural)."
+    consistency:
+      score: 10
+      notes: "Jekyll/Just-the-Docs front-matter preserved. Callout syntax matches existing doc conventions. Cross-links use the Jekyll {% link %} tag (site-root-relative .md) to reference. Terminology aligned with research (YOUTUBE_API_TOKEN, YOUTUBE_API_KEY, zubeid-youtube-mcp-server)."
+    correctness:
+      score: 10
+      notes: "Grammar and spelling correct. No broken internal links. Cross-link to reference uses the Jekyll {% link reference/youtube-mcp-server-reference.md %} tag."
+    usability:
+      score: 9
+      notes: "Achieves JTBD: reader can install and verify the server following the steps. Sample prompts provide immediate next actions. Optional fallback section is non-blocking. One minor: 'Using the server' section could be more action-oriented (e.g., 'Step 5 — Try your first query') but samples are clear."
+    overall: "pass"
+
+  collapse_detection:
+    clean: true
+    violations: []
+    analysis: "No collapse patterns detected. Document maintains how-to purity (90%+). Prerequisites and steps are task-focused. Extended filters and quota details are appropriately deferred to the reference document via cross-links rather than embedded in how-to. 'Using the server' section contains sample prompts (natural language) not conceptual background, so no reference-narrative creep. Env-var gotcha is flagged as a procedural warning, not as an explanation of 'why' authentication exists."
+
+  cross_reference_validation:
+    outbound_links:
+      - link: "{% link reference/youtube-mcp-server-reference.md %}"
+        appears_in: ["Step 3 context", "Optional section", "Using the server (2 instances)", "What's next"]
+        target_validated: true
+        target_exists: true
+        anchor_appropriate: true
+        note: "Links point to reference for quota limits, full tool catalog, extended params — appropriate delegation."
+    inbound_links_expected:
+      - from: "reference"
+        note: "Reference should link back to how-to for install instructions (validated separately)"
+
+  recommendations:
+    - priority: "low"
+      action: "Consider adding 'Step 5 — Try your first query' as a labeled section instead of 'Using the server', to reinforce task completion flow."
+      rationale: "Minor readability: steps are numbered 1-4; 'Using the server' is a separate narrative section. Numbering it as 'Step 5' would make the task narrative more continuous (install → verify → use)."
+    - priority: "low"
+      action: "In the verification step, clarify timeout expectations: 'If claude mcp list takes >10 seconds, check your network connection or Node.js installation.'"
+      rationale: "Users on slow networks or with large .mcp.json files might see delays; a note would reduce support questions."
+
+  verdict: "approved"
+  verdict_rationale: "Document passes DIVIO how-to validation with high confidence (90% type purity). All quality characteristics score 9-10. Cross-links are correct. Env-var gotcha (most common setup error per research) is prominently featured. No collapse violations. Ready for publication."
+  approval_date: "2026-07-19"
+
+---
+# ===== PEER REVIEW (nw-documentarist-reviewer, 2026-07-19) =====
+documentation_assessment_review:
+  review_id: "doc_rev_20260719_001_howto"
+  reviewer: "nw-documentarist-reviewer (Quill)"
+  review_date: "2026-07-19"
+  classification_review:
+    accurate: true
+    independent_classification: "how-to guide"
+    measured_type_purity_percent: 97.5
+    documentarist_purity_percent: 90
+    match: true
+  collapse_detection_review:
+    accurate: true
+    independent_findings: "No collapse detected (clean)"
+  factual_fidelity_check:
+    node_floor: "VERIFIED (Node 18+, research Finding 3)"
+    env_var_gotcha: "VERIFIED (export YOUTUBE_API_TOKEN, not YOUTUBE_API_KEY; research Finding 8)"
+    env_var_mapping: "VERIFIED (${YOUTUBE_API_TOKEN} -> YOUTUBE_API_KEY)"
+    tool_count: "VERIFIED (10 tools, research Finding 4)"
+    fallback_keys: "VERIFIED (YOUTUBE_API_TOKEN_2/3 -> YOUTUBE_API_KEY2/3, research Finding 7)"
+    all_facts_match_research: true
+  cross_reference_validation:
+    jekyll_front_matter: "INTACT"
+    outbound_links: "{% link reference/youtube-mcp-server-reference.md %} (working)"
+    all_links_verified: true
+  issue_summary: { blocking: 0, high: 0, medium: 0, low: 2 }
+  verdict: "APPROVED"

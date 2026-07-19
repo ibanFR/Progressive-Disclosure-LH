@@ -10,7 +10,7 @@ nav_order: 1
 A [Learning Hour](https://sammancoaching.org/reference/learning_hour_definition.html) on keeping `AGENTS.md` short and letting coding agents pull in knowledge documents **on demand** — so the context window stays free for real work.
 {: .fs-6 .fw-300 }
 
-This Learning Hour (#GLH053, by Emily Bache, she/her) walks a team through *why* a bloated `AGENTS.md` hurts, and *how* progressive disclosure fixes it. A frame-by-frame [Facilitation Guide](how-to/facilitation-guide.html) accompanies the [Miro board](https://miro.com/app/board/uXjVHPh12To=/); this page is the session plan. Materials are shared under a Creative Commons Share-alike license.
+This Learning Hour (#GLH053, by Emily Bache, she/her) walks a team through *why* a bloated `AGENTS.md` hurts, and *how* progressive disclosure fixes it. A frame-by-frame [Facilitation Guide]({% link how-to/facilitation-guide.md %}) accompanies the [Miro board](https://miro.com/app/board/uXjVHPh12To=/); this page is the session plan. Materials are shared under a Creative Commons Share-alike license.
 
 ## Table of Contents
 {: .no_toc .text-delta }
@@ -119,7 +119,7 @@ See [Conclusions Activities](https://sammancoaching.org/activities/conclusions.h
 
 ## References
 
-- [Facilitation Guide](how-to/facilitation-guide.html) — frame-by-frame walkthrough
+- [Facilitation Guide]({% link how-to/facilitation-guide.md %}) — frame-by-frame walkthrough
 - [Miro board](https://miro.com/app/board/uXjVHPh12To=/)
 - [Progressive-Disclosure-LH exercise repository](https://github.com/ibanFR/Progressive-Disclosure-LH)
 - [Encode-TestDesign-Kata](https://github.com/emilybache/Encode-TestDesign-Kata) by Emily Bache
