@@ -30,7 +30,7 @@ Lookup reference for the `youtube` MCP server registered in this repository.
 | Config file | `.mcp.json` (project root) |
 | Config key | `YOUTUBE_API_KEY` ← `${YOUTUBE_API_TOKEN}` |
 | Backing API | [YouTube Data API v3](https://developers.google.com/youtube/v3) |
-| Install guide | [Install the YouTube MCP Server](../how-to/youtube-mcp-server.html) |
+| Install guide | [Install the YouTube MCP Server](../how-to/youtube-mcp-server-guide.html) |
 
 ## Configuration
 

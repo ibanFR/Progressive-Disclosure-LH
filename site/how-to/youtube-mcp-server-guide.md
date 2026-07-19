@@ -97,4 +97,4 @@ Or, inside an interactive Claude Code session, run the `/mcp` command. You shoul
 ## What's next
 
 The server is installed and connected. For the invocation details and prompts you can
-try, see the [YouTube MCP Server reference](../reference/youtube-mcp-server.html).
+try, see the [YouTube MCP Server reference](../reference/youtube-mcp-server-reference.html).
