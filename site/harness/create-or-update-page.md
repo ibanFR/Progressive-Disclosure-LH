@@ -1,6 +1,6 @@
 Stack replies with 🧐 when this harness is loaded in the context window.
 
-Regenerate docs with the `/nw-document` pipeline rather than hand-editing where a matching artifact exists.
+Always create or update a page with the `/nw-document` pipeline — never hand-write or hand-edit page content. This applies to both new pages and changes to existing ones.
 
 The pipeline's research + validation reports live under the repo-root `docs/`, not here — `docs/` is kept out of Jekyll's build.
 
