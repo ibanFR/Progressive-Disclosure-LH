@@ -1,4 +1,4 @@
-Stack replies with 🌊 when this instruction file is loaded in the context window.
+**ALWAYS** stack replies with 🌊 when this instruction file is loaded in the context window.
 
 This directory holds **nWave documentation artifacts** — the research and validation
 outputs produced by the `/nw-document` pipeline. See [README.md](README.md) for what
