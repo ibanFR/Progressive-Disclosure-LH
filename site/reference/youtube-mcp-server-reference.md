@@ -25,20 +25,21 @@ Lookup reference for the `youtube` MCP server registered in this repository.
 |-------|-------|
 | Server name | `youtube` |
 | Package | [`zubeid-youtube-mcp-server`](https://www.npmjs.com/package/zubeid-youtube-mcp-server) v1.0.2 |
-| npm package published | 2026-07-16 |
-| Source repository | [github.com/ZubeidHendricks/youtube-mcp-server](https://github.com/ZubeidHendricks/youtube-mcp-server) |
+| Published | 2026-07-16 |
 | Author | Zubeid Hendricks |
 | License | MIT |
+| Repository | [github.com/ZubeidHendricks/youtube-mcp-server](https://github.com/ZubeidHendricks/youtube-mcp-server) |
 | Invocation | `npx -y zubeid-youtube-mcp-server` |
 | Config file | `.mcp.json` (project root) |
-| Config key | `YOUTUBE_API_KEY` ← `${YOUTUBE_API_TOKEN}` |
 | Backing API | [YouTube Data API v3](https://developers.google.com/youtube/v3) |
-| Type | Read/search only (no write tools) |
+| Tools | 10 read/search tools (no write) |
 | Install guide | [Install the YouTube MCP Server](../how-to/youtube-mcp-server-guide.html) |
 
 ## Configuration
 
-Entry as registered in `.mcp.json`:
+### Environment variable mapping
+
+The `.mcp.json` entry maps your shell environment variables into the server's process:
 
 ```json
 "youtube": {
@@ -50,9 +51,15 @@ Entry as registered in `.mcp.json`:
 }
 ```
 
-**Environment variable mapping**: `YOUTUBE_API_KEY` is the variable the server reads from its process environment. The `.mcp.json` entry `"YOUTUBE_API_KEY": "${YOUTUBE_API_TOKEN}"` signals Claude Code to expand `${YOUTUBE_API_TOKEN}` from your shell environment and pass the result to the server as `YOUTUBE_API_KEY`.
+- The server reads `YOUTUBE_API_KEY` from its process environment.
+- Your shell exports `YOUTUBE_API_TOKEN` (export `YOUTUBE_API_TOKEN="your-key"` in `~/.zshrc` or `~/.bashrc`).
+- Claude Code expands `${YOUTUBE_API_TOKEN}` and injects its value as `YOUTUBE_API_KEY` at startup.
 
-**Fallback keys**: The server supports optional `YOUTUBE_API_KEY2` and `YOUTUBE_API_KEY3` entries in the `.mcp.json` `env` map. When a request fails because a key has exhausted its daily quota, the server automatically retries the same request with the next configured key. Example:
+**Common error**: If you export `YOUTUBE_API_KEY` directly instead of `YOUTUBE_API_TOKEN`, Claude Code will not map it correctly and the server will fail. See the [install guide](../how-to/youtube-mcp-server-guide.html) for details.
+
+### Fallback keys (optional)
+
+Add multiple keys for quota resilience:
 
 ```json
 "env": {
@@ -62,35 +69,47 @@ Entry as registered in `.mcp.json`:
 }
 ```
 
-At least one key must be set. If a key's quota is exhausted, the server fails over to the next key.
+Set the fallback keys in your shell (`export YOUTUBE_API_TOKEN_2="key2"`, etc.). At least one key is required. When a key's quota is exhausted, the server retries with the next available key.
 
-## Tools and parameters
+## Tools (10 total)
 
-The server exposes 10 read/search tools across four groups.
+The server exposes 10 tools across four groups: videos, transcripts, channels, and playlists.
 
-### Videos
+### Videos (2 tools)
 
 #### `videos_searchVideos`
 
-Search YouTube videos with filters.
+Search YouTube videos with optional filters.
 
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
 | `query` | string | Yes | Search terms. |
-| `maxResults` | integer | No | Number of results to return. |
+| `maxResults` | integer | No | Number of results (default behavior set by server). |
+| `order` | string | No | Sort order (relevance, date, viewCount, etc.). |
+| `publishedAfter` | string | No | ISO 8601 date. Include videos published after this date. |
+| `publishedBefore` | string | No | ISO 8601 date. Include videos published before this date. |
+| `channelId` | string | No | Restrict results to a specific channel. |
+| `uniqueChannels` | boolean | No | Omit duplicate results from the same channel. |
+| `channelMinSubscribers` | integer | No | Minimum channel subscriber count. |
+| `channelMaxSubscribers` | integer | No | Maximum channel subscriber count. |
+| `channelLastUploadAfter` | string | No | ISO 8601 date. Include channels with recent uploads after this date. |
+| `channelLastUploadBefore` | string | No | ISO 8601 date. Include channels with recent uploads before this date. |
+| `creatorOnly` | boolean | No | Restrict to verified creator channels. |
+| `sortBy` | string | No | Sort by relevance, date, title, etc. |
 
-**Extended filters** (not fully verified): `order`, `publishedAfter`, `publishedBefore`, `channelId`, `uniqueChannels`, `channelMinSubscribers`, `channelMaxSubscribers`, `channelLastUploadAfter`, `channelLastUploadBefore`, `creatorOnly`, `sortBy`. See the [YouTube Data API v3 documentation](https://developers.google.com/youtube/v3/docs/search/list) for authoritative parameter details.
+{: .note }
+> Extended filter parameters are advertised by the tool schema. Before using them, validate empirically in your use case, as implementation honoring of all parameters is not fully verified in the source.
 
 #### `videos_getVideo`
 
-Fetch detailed metadata for a single video.
+Retrieve detailed metadata for a single video.
 
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
-| `videoId` | string | Yes | YouTube video ID. |
-| `parts` | string | No | Comma-separated list of response parts (e.g., `snippet,statistics,contentDetails`). |
+| `videoId` | string | Yes | YouTube video ID (11 characters, found in `youtube.com/watch?v=<ID>`). |
+| `parts` | string[] | No | Response parts to include (e.g., `snippet`, `statistics`, `contentDetails`, `fileDetails`). Defaults to core metadata. |
 
-### Transcripts
+### Transcripts (1 tool)
 
 #### `transcripts_getTranscript`
 
@@ -99,9 +118,12 @@ Extract a video's transcript (closed captions or auto-generated).
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
 | `videoId` | string | Yes | YouTube video ID. |
-| `language` | string | No | ISO 639-1 language code (e.g., `en`, `es`). Defaults to available caption track. |
+| `language` | string | No | ISO 639-1 language code (e.g., `en`, `es`, `fr`). Defaults to the first available caption track. |
 
-### Channels
+{: .note }
+> Transcripts are fetched via the `youtube-transcript` library, which scrapes caption data. This **does not** consume YouTube Data API quota (see quota section below).
+
+### Channels (5 tools)
 
 #### `channels_searchChannels`
 
@@ -110,37 +132,52 @@ Search YouTube channels.
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
 | `query` | string | Yes | Search terms. |
-| `maxResults` | integer | No | Number of results to return. |
-
-**Extended filters** (not fully verified): `order`, `channelType`, `minSubscribers`, `maxSubscribers`, `lastUploadAfter`, `lastUploadBefore`, `creatorOnly`, `sortBy`. See the [YouTube Data API v3 documentation](https://developers.google.com/youtube/v3/docs/search/list) for authoritative parameter details.
+| `maxResults` | integer | No | Number of results. |
+| `order` | string | No | Sort order. |
+| `channelType` | string | No | Filter by type (e.g., `show`). |
+| `minSubscribers` | integer | No | Minimum subscriber count. |
+| `maxSubscribers` | integer | No | Maximum subscriber count. |
+| `lastUploadAfter` | string | No | ISO 8601 date. Channels uploaded after this date. |
+| `lastUploadBefore` | string | No | ISO 8601 date. Channels uploaded before this date. |
+| `creatorOnly` | boolean | No | Verified creators only. |
+| `sortBy` | string | No | Sort by relevance, date, title, etc. |
 
 #### `channels_findCreators`
 
-Discover active creator channels based on a video query.
+Discover active creator channels matching a video search query.
 
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
-| `query` | string | Yes | Video search terms. |
-| `maxResults` | integer | No | Number of channels to return. |
-
-**Extended filters** (not fully verified): `videoPublishedAfter`, `videoPublishedBefore`, `channelMinSubscribers`, `channelMaxSubscribers`, `channelLastUploadAfter`, `channelLastUploadBefore`, `creatorOnly`, `sortBy`, `sampleVideosPerChannel`. See the [YouTube Data API v3 documentation](https://developers.google.com/youtube/v3/docs/search/list) for authoritative parameter details.
+| `query` | string | Yes | Video search terms. Channels found by their recent video matches. |
+| `maxResults` | integer | No | Maximum number of channels to return. |
+| `order` | string | No | Sort order. |
+| `videoPublishedAfter` | string | No | ISO 8601 date. Sample videos published after this date. |
+| `videoPublishedBefore` | string | No | ISO 8601 date. Sample videos published before this date. |
+| `channelMinSubscribers` | integer | No | Minimum channel subscriber count. |
+| `channelMaxSubscribers` | integer | No | Maximum channel subscriber count. |
+| `channelLastUploadAfter` | string | No | ISO 8601 date. Channels with recent uploads after this date. |
+| `channelLastUploadBefore` | string | No | ISO 8601 date. Channels with recent uploads before this date. |
+| `creatorOnly` | boolean | No | Verified creators only. |
+| `sortBy` | string | No | Sort by relevance, date, title, subscriber count, etc. |
+| `sampleVideosPerChannel` | integer | No | Number of recent videos to sample per channel for filtering. |
 
 #### `channels_getChannel`
 
-Fetch metadata for a single channel.
+Retrieve metadata for a single channel.
 
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
-| `channelId` | string | Yes | YouTube channel ID. |
+| `channelId` | string | Yes | YouTube channel ID (found in `youtube.com/channel/<ID>` or via search). |
 
 #### `channels_getChannels`
 
-Fetch metadata for multiple channels at once.
+Retrieve metadata for multiple channels in a single request.
 
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
-| `channelIds` | array | Yes | List of YouTube channel IDs. |
-| `includeLatestUpload` | boolean | No | Include the channel's most recent video (not fully verified). |
+| `channelIds` | string[] | Yes | List of YouTube channel IDs. |
+| `parts` | string[] | No | Response parts (e.g., `snippet`, `statistics`, `brandingSettings`). |
+| `includeLatestUpload` | boolean | No | Include the channel's most recent video in the response. |
 
 #### `channels_listVideos`
 
@@ -151,61 +188,106 @@ List videos published by a channel.
 | `channelId` | string | Yes | YouTube channel ID. |
 | `maxResults` | integer | No | Number of videos to return. |
 
-### Playlists
+### Playlists (2 tools)
 
 #### `playlists_getPlaylist`
 
-Fetch metadata for a single playlist.
+Retrieve metadata for a single playlist.
 
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
-| `playlistId` | string | Yes | YouTube playlist ID. |
+| `playlistId` | string | Yes | YouTube playlist ID (found in `youtube.com/playlist?list=<ID>`). |
 
 #### `playlists_getPlaylistItems`
 
-Fetch items (videos) within a playlist.
+List videos within a playlist.
 
 | Parameter | Type | Required | Notes |
 |-----------|------|----------|-------|
 | `playlistId` | string | Yes | YouTube playlist ID. |
 | `maxResults` | integer | No | Number of items to return. |
 
-## Quota and usage limits
+## Quota and cost model
 
-**Default quota**: Projects receive a recurring quota of **10,000 units per day**. The quota resets daily at midnight Pacific Time.
+### Daily allocation
 
-**Quota costs vary by operation**: Read and list operations are cheap. Search operations are more expensive and consume quota faster. Consult the live [YouTube Data API v3 quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) for exact per-method unit costs before designing high-volume queries.
+Each Google Cloud project receives **10,000 quota units per day** by default. The quota resets daily at midnight Pacific Time.
 
-**Quota exhaustion**: When a request fails due to quota exhaustion, the server retries the same request with the next configured API key (if `YOUTUBE_API_KEY2` or `YOUTUBE_API_KEY3` are set). Using multiple API keys is a mitigation strategy for quota limits.
+### Cost per operation
 
-## Locating IDs in YouTube URLs
+| Operation | Cost (units) | Tools affected |
+|-----------|------|---|
+| `search.list` | 100 | `videos_searchVideos`, `channels_searchChannels`, `channels_findCreators`, `channels_listVideos` (when searching underlying videos) |
+| `videos.list` | 1 | `videos_getVideo` |
+| `channels.list` | 1 | `channels_getChannel`, `channels_getChannels`, hydration in search results |
+| `playlists.list` | 1 | `playlists_getPlaylist` |
+| `playlistItems.list` | 1 | `playlists_getPlaylistItems` |
+| Transcripts via `youtube-transcript` | 0 | `transcripts_getTranscript` (library-based, no Data API call) |
 
-Video, channel, and playlist IDs appear in YouTube URLs as follows:
+### Cost examples
 
-- **Video ID**: In `youtube.com/watch?v=<VIDEO_ID>` — the `v` parameter.
-- **Channel ID**: In `youtube.com/channel/<CHANNEL_ID>` or in a channel's URL slug.
-- **Playlist ID**: In `youtube.com/playlist?list=<PLAYLIST_ID>` — the `list` parameter.
+- A video search (`videos_searchVideos` with `maxResults=50`) costs ~100 units, allowing ~100 searches per day.
+- Retrieving one video's metadata (`videos_getVideo`) costs 1 unit.
+- A transcript fetch costs 0 units.
+- Multi-key fallback: Use `YOUTUBE_API_KEY2` and `YOUTUBE_API_KEY3` to triple your effective daily quota (each key = another 10,000 units/day from a separate GCP project).
+
+### Quota exhaustion
+
+When a request fails because a key has reached its daily quota, the server automatically retries the same request with the next configured API key (if available). This failover is transparent to Claude Code.
+
+For detailed current costs per API method, see the [YouTube Data API v3 quota cost documentation](https://developers.google.com/youtube/v3/determine_quota_cost).
+
+## Finding IDs in YouTube URLs
+
+### Video ID
+
+In `youtube.com/watch?v=<VIDEO_ID>` — the `v` query parameter.
+Example: `youtube.com/watch?v=dQw4w9WgXcQ` → `dQw4w9WgXcQ` is the video ID.
+
+### Channel ID
+
+In `youtube.com/channel/<CHANNEL_ID>` or in the channel's custom URL slug.
+Example: `youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw` → `UC_x5XG1OV2P6uZZ5FSM9Ttw` is the channel ID.
+
+### Playlist ID
+
+In `youtube.com/playlist?list=<PLAYLIST_ID>` — the `list` query parameter.
+Example: `youtube.com/playlist?list=PLBCF2DAC6FFB574DE` → `PLBCF2DAC6FFB574DE` is the playlist ID.
 
 ## Sample prompts
 
-Copy-paste starting points once the server is connected. Replace `<VIDEO_ID>`, `<CHANNEL_ID>`, and `<PLAYLIST_ID>` with real IDs from YouTube URLs.
+Copy-paste these prompts into Claude Code and adapt search terms or IDs for your use case. Each prompt shows a natural-language query that exercises one or more tools.
 
-**Video search**: `Find the 5 most-viewed videos about 'Rust async runtime' published in the last year.`
+**Search for videos on a topic:**
+"Find the 5 most-viewed YouTube videos about 'retrieval augmented generation' published after January 2025, and skip duplicate channels."
 
-**Video metadata**: `Get the title, channel, view count, and duration for the YouTube video with ID <VIDEO_ID>.`
+**Get a video's metadata:**
+"Get the title, description, view count and duration for YouTube video `dQw4w9WgXcQ`."
 
-**Transcript**: `Fetch the transcript of video <VIDEO_ID> and summarize the three main points.`
+**Extract a transcript:**
+"Pull the English transcript of video `dQw4w9WgXcQ` and summarize the three main points."
 
-**Channel lookup**: `Find the channel 'Fireship' and tell me its subscriber count and recent upload cadence.`
+**Search for channels:**
+"Search for YouTube channels about home espresso with between 10,000 and 200,000 subscribers, creators only."
 
-**Multi-channel lookup**: `Compare subscriber counts for these channel IDs and show their latest uploads: <CHANNEL_ID>, <CHANNEL_ID>, <CHANNEL_ID>.`
+**Find active creators:**
+"Find active creators making videos on 'urban gardening' who uploaded in the last 3 months, sample 3 recent videos per channel, sorted by subscriber count."
 
-**Creator discovery**: `Find active creators who make videos about 'homelab kubernetes' with at least 10k subscribers.`
+**View channel stats:**
+"Show me the stats for channel `UC_x5XG1OV2P6uZZ5FSM9Ttw`."
 
-**List channel videos**: `List the 10 most recent videos from channel <CHANNEL_ID>.`
+**Compare channels:**
+"Compare subscriber counts for these three channels and include each one's latest upload: `UC...A`, `UC...B`, `UC...C`."
 
-**Playlist**: `Show me all the videos in playlist <PLAYLIST_ID> with their titles and positions.`
+**List recent channel videos:**
+"List the 10 most recent videos from channel `UC_x5XG1OV2P6uZZ5FSM9Ttw`."
+
+**Playlist details:**
+"Give me the details of playlist `PLBCF2DAC6FFB574DE`."
+
+**Playlist items:**
+"List the first 25 videos in playlist `PLBCF2DAC6FFB574DE`."
 
 ## Notes on extended parameters
 
-Several tools accept additional filter parameters beyond the core parameters listed above (e.g., `order`, `creatorOnly`, `sortBy`, subscriber ranges). These extended parameters are drawn from the server's README and were not fully verified against the published npm package source. Before using them, consult the [YouTube Data API v3 search.list documentation](https://developers.google.com/youtube/v3/docs/search/list) to confirm availability and syntax for your use case.
+Several tools (`videos_searchVideos`, `channels_searchChannels`, `channels_findCreators`) advertise extended filter parameters such as `creatorOnly`, `sortBy`, subscriber ranges, and date windows. These parameters are drawn from the server's tool schema and README. Before deploying a query that relies on specific filters, validate the behavior empirically in your use case, as comprehensive implementation verification of all parameters was not performed at the function layer. Consult the [YouTube Data API v3 search.list documentation](https://developers.google.com/youtube/v3/docs/search/list) for authoritative API parameter details.

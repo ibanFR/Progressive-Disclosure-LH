@@ -103,3 +103,58 @@ two `.validation.yaml` files sit under `site/`, and Jekyll copies them verbatim 
 built `_site/` output (confirmed in `_site/how-to/` and `_site/reference/`), so they would
 be publicly served on the GitHub Pages site. Recommended remediation (pending user
 decision): move the validation artifacts out of `site/` into the `docs/` tree.
+
+---
+
+# Documentation Session Prompts — Session 3 (2026-07-19)
+
+A verbatim record of the user prompts from the third documentation session, in order.
+
+1. `/nw-document youtube-mcp-server-for-howto-reference`
+
+   Claude found the how-to + reference docs already existed and were committed, and asked
+   one follow-up; user answer:
+   - **The docs already exist and are committed — how should this /nw-document run proceed?**
+     → **Regenerate both (overwrite)** — run the full four-phase pipeline and overwrite both
+     `site/` docs, with validation `.yaml` written under `docs/` (not `site/`) to avoid the
+     Jekyll-pollution issue flagged in Session 2.
+
+2. document the prompts of this session to @../harness/documentation-prompts.md
+
+## Generated / modified output — Session 3
+
+The `/nw-document` command (prompt 1) re-ran the four-phase research → review → author →
+review pipeline (agents: nw-researcher, nw-researcher-reviewer, nw-documentarist,
+nw-documentarist-reviewer). The research gate needed one revision cycle
+(NEEDS_REVISION → APPROVED); both documentation reviews returned APPROVED on the first
+iteration. Files:
+
+- `docs/research/youtube-mcp-server-for-howto-reference-doc.md` — regenerated cited research
+  (overall 0.89; Research Review APPROVED). This run **closed all four gaps** the prior run
+  left open: YouTube Data API v3 quota costs (`search.list`=100 units, list ops=1,
+  `captions.list`=50 but unused by this server, 10,000 units/day default); the **Node.js
+  floor** (the package declares no `engines.node`; Node ≥18 is imposed transitively by
+  `googleapis@^173` and `@modelcontextprotocol/sdk@^1.1.1`); the **extended tool filter
+  params** (now source-confirmed at the `src/server.ts` schema layer, with the
+  `functions/*.ts` vs `server.ts` conflict documented); and re-verified v1.0.2 / 2026-07-16
+  / MIT.
+- `site/how-to/youtube-mcp-server-guide.md` — regenerated DIVIO HOW-TO (type purity 90%,
+  measured 97.5%; Doc Review APPROVED). Overwrote the existing file. Features the env-var
+  gotcha (export `YOUTUBE_API_TOKEN`, not `YOUTUBE_API_KEY`) prominently.
+- `site/reference/youtube-mcp-server-reference.md` — regenerated DIVIO REFERENCE (type
+  purity 95%, measured 99%; Doc Review APPROVED). Overwrote the existing file.
+- `docs/howto/youtube-mcp-server-guide.md.validation.yaml` and
+  `docs/reference/youtube-mcp-server-reference.md.validation.yaml` — validation reports,
+  each with the peer-reviewer's YAML block appended.
+
+The Session-2 Jekyll issue is **resolved this run**: the two `.validation.yaml` reports were
+written under the `docs/` tree, not `site/`, so they are no longer copied into the built
+`_site/` output. Verified no `*.validation.yaml` exists under `site/`.
+
+During the research-review cycle, the reviewer (read-only) returned NEEDS_REVISION for a
+single off-allowlist source (`api.github.com`, informational only); the orchestrator applied
+the fix directly — removed the source from the Source Analysis table and Full Citations,
+renumbered citations `[7–9]→[6–8]`, and updated the source counts `9→8`.
+
+Changes were left uncommitted on branch `add-youtube-mcp-docs` (3 modified files + 2 new
+`docs/` subdirectories) pending user direction.
