@@ -52,7 +52,7 @@ Progressive disclosure resolves this trade-off through a structural pattern. `AG
 1. **Tell the agent *when* to read each document.** The trigger lives in `AGENTS.md`; the content lives elsewhere. A one-sentence pointer in the hub tells the agent *why* and *when* to load the whole document from a spoke.
 2. **Whole documents load only when needed.** Nothing enters the context window until the moment it is actually relevant.
 
-This dissolves the Connect tension visible in the Learning Hour: the list of things a team *wants* in `AGENTS.md` is enormous—coding standards, commit conventions, architectural constraints, refactoring patterns, project context, repo layout, build instructions. Progressive disclosure doesn't ask teams to cut content; it asks them to *defer* it. Keep the hub short by holding pointers, not detail. The spokes hold the full story.
+This dissolves the tension visible in the Learning Hour: the list of things a team *wants* in `AGENTS.md` is enormous—coding standards, commit conventions, architectural constraints, refactoring patterns, project context, repo layout, build instructions. Progressive disclosure doesn't ask teams to cut content; it asks them to *defer* it. Keep the hub short by holding pointers, not detail. The spokes hold the full story.
 
 The payoff: `AGENTS.md` stays lean, the agent has spare context capacity on every loop, and the model's attention budget goes where it matters.
 
@@ -84,14 +84,6 @@ The result: because only metadata is pre-loaded, "the amount of context that can
 
 This is progressive disclosure applied to the disclosure mechanism itself—a recursive pattern that scales as agent systems grow more complex.
 
-## Connections to Diataxis
-
-The [Diataxis framework](https://diataxis.fr/) distinguishes four types of documentation—tutorials, how-to guides, reference, and explanation—each serving a different reader need. This explanation is itself an example: it is *not* a "here is how to write `AGENTS.md`" guide (that would be how-to or reference). It explains *why* you would structure `AGENTS.md` this way—the background, the trade-offs, the connections to larger ideas in design and instructional practice.
-
-This distinction matters for agent documentation too. When you write a knowledge document (a spoke), it should be one type: a tutorial walks a newcomer through a task step-by-step; a how-to guide solves a specific problem; reference is exhaustive fact-lookup; explanation is understanding-oriented background. Mixing types in a single document creates confusion and bloat—exactly the problem progressive disclosure is meant to prevent.
-
-By keeping `AGENTS.md` short and letting knowledge documents specialize by type, teams align agent guidance with the Diataxis principle: one type per document, never mixed.
-
 ## Further Reading
 
 The [Learning Hour session plan]({% link index.md %}) walks a team through the mechanism interactively, with a live demo and coding exercise. The [Facilitation Guide]({% link how-to/facilitation-guide.md %}) provides frame-by-frame coaching notes for running the hour.
@@ -103,6 +95,5 @@ The [Learning Hour session plan]({% link index.md %}) walks a team through the m
 - [Anthropic: Equipping agents for the real world with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) — Primary source for the Skills progressive-disclosure architecture.
 - [Anthropic Claude Platform: Agent Skills overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) — Official product documentation for how Skills load in stages.
 - [Augment Code: A good AGENTS.md is a model upgrade…](https://www.augmentcode.com/blog/how-to-write-good-agents-dot-md-files) — Vendor research on optimal AGENTS.md length (100–150 lines) and performance uplift (10–15%). Single-source findings; attributed as a vendor blog.
-- [Diataxis: Explanation](https://diataxis.fr/explanation/) — Authoritative framework for documentation types.
 - [InstructionalDesign.org: Minimalism (J. Carroll)](https://www.instructionaldesign.org/theories/minimalism/) — Secondary summary of Carroll's minimalist approach to documentation design.
 - [Interaction Design Foundation: Progressive Disclosure](https://www.interaction-design.org/literature/topics/progressive-disclosure) — Corroborating definition and history of the pattern in UX.
