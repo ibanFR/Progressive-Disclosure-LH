@@ -19,7 +19,7 @@ The rest follow the Diataxis model — one type per page, never mixed:
 
 ## Harnesses
 
-- Page content is **NEVER** hand-written or hand-edited. **ALWAYS** read
+- Page content is **NEVER** handwritten or hand-edited. **ALWAYS** read
   [harness/create-or-update-page.md](harness/create-or-update-page.md) and follow it
   **BEFORE** creating or editing any page.
 - Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
