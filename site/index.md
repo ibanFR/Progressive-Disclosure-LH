@@ -68,7 +68,7 @@ Keep it tight and observable; the point is the *mechanism*, not a polished resul
 
 ## Concept — Progressive Disclosure, the core idea (⏱️ 3 min)
 
-**"Progressive Disclosure: Minimize Context."** A hub-and-spoke model: `AGENTS.md` & the harness sit at the centre; knowledge documents (Test Design Advice, Class Design Advice, Commit Message Advice) are read *on demand*.
+**"Progressive Disclosure: Minimize Context."** `AGENTS.md` & the harness stay small, holding only triggers and pointers; the knowledge documents (Test Design Advice, Class Design Advice, Commit Message Advice) are read *on demand*.
 
 Two rules:
 

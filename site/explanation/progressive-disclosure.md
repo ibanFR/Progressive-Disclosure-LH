@@ -19,9 +19,9 @@ Progressive disclosure is a design principle that keeps essential information vi
 
 ## What is Progressive Disclosure?
 
-Progressive disclosure is a design principle: show essential options initially, defer specialized ones. Jakob Nielsen frames it as resolving the tension between power and simplicity: "Initially, show users only a few of the most important options. Offer a larger set of specialized options upon request." The mechanism is simple—hiding advanced features reduces cognitive load, and research shows people actually understand systems better when helped to prioritize.
+Progressive disclosure is a design principle, rooted in 1970s–80s HCI and popularized by usability engineer Jakob Nielsen, that embodies a simple rule: show only what is needed now, and defer everything else until actually requested. Nielsen frames it as resolving the tension between power and simplicity: "Initially, show users only a few of the most important options. Offer a larger set of specialized options upon request." John Carroll's minimalist instructional design—the *Minimal Manual*, 1987–88—applies the same logic to documentation through brevity, real tasks, and guided exploration. Both rest on the same insight: attention is scarce, whether human or artificial.
 
-For coding agents, this principle applies directly. The scarce resource is not human attention but the context window. `AGENTS.md` *is* documentation-for-an-agent; progressive disclosure keeps it short and lets the agent pull detail on demand. The principle is old—John Carroll's *Minimal Manual* (1987–88) calls this minimalism—and it transfers across contexts because the underlying constraint is the same: scarcity of attention, whether human or tokenized.
+For coding agents, the principle is straightforward: keep `AGENTS.md` short—holding *triggers and pointers*, not full detail—and let the agent pull knowledge documents *on demand*. The scarce resource is the context window. On every loop iteration, the harness re-injects `AGENTS.md`, system prompt, and conversation history into the LLM, and model recall degrades as tokens accumulate. The remedy is the structure explained below: `AGENTS.md` holds short pointers; each knowledge document loads only when its trigger fires. This is what Anthropic calls "context engineering" and "just-in-time" loading. Agent Skills push the idea one step further, disclosing even the pointers progressively. The mechanics, trade-offs, and how to observe what actually loads—all explained ahead.
 
 ## Why It Matters for Coding Agents
 
@@ -41,14 +41,14 @@ As tokens accumulate in the context window, the model's ability to accurately *r
 
 Put together, these three ideas point to a hard trade-off: include everything people *want* in `AGENTS.md`, and the agent pays a compounding performance cost on every iteration. Defer the detail to on-demand loading, and the agent stays sharp—but only if it can reliably *find* what it needs when it needs it.
 
-## The Hub-and-Spoke Model
+## Pointers, Loaded on Demand
 
-Progressive disclosure resolves this trade-off through a structural pattern. `AGENTS.md` and the harness sit at the hub. Knowledge documents—Test Design Advice, Class Design Advice, Commit Message Guidelines, and the like—radiate as spokes. The model enforces two rules:
+Progressive disclosure resolves this trade-off through a structural pattern. `AGENTS.md` and the harness are always loaded; they hold short pointers and triggers. Knowledge documents—Test Design Advice, Class Design Advice, Commit Message Guidelines, and the like—contain the full detail and load only when needed. The model enforces two rules:
 
-1. **Tell the agent *when* to read each document.** The trigger lives in `AGENTS.md`; the content lives elsewhere. A one-sentence pointer in the hub tells the agent *why* and *when* to load the whole document from a spoke.
+1. **Tell the agent *when* to read each document.** The trigger lives in `AGENTS.md`; the content lives elsewhere. A one-sentence pointer tells the agent *why* and *when* to load the whole document.
 2. **Whole documents load only when needed.** Nothing enters the context window until the moment it is actually relevant.
 
-This dissolves the tension visible in the Learning Hour: the list of things a team *wants* in `AGENTS.md` is enormous—coding standards, commit conventions, architectural constraints, refactoring patterns, project context, repo layout, build instructions. Progressive disclosure doesn't ask teams to cut content; it asks them to *defer* it. Keep the hub short by holding pointers, not detail. The spokes hold the full story.
+This dissolves the tension visible in the Learning Hour: the list of things a team *wants* in `AGENTS.md` is enormous—coding standards, commit conventions, architectural constraints, refactoring patterns, project context, repo layout, build instructions. Progressive disclosure doesn't ask teams to cut content; it asks them to *defer* it. Keep `AGENTS.md` short by holding pointers, not detail. The knowledge documents hold the full story.
 
 The payoff: `AGENTS.md` stays lean, the agent has spare context capacity on every loop, and the model's attention budget goes where it matters.
 
@@ -56,7 +56,7 @@ The payoff: `AGENTS.md` stays lean, the agent has spare context capacity on ever
 
 Progressive disclosure is one tactic within a larger discipline that Anthropic calls **context engineering**—the set of strategies for curating and maintaining the optimal set of tokens during LLM inference. It succeeds prompt engineering as agents run long, multi-turn tasks. The exact prescription Anthropic endorses is called "just-in-time" loading: agents "maintain lightweight identifiers (file paths, stored queries, web links, etc.) and use these references to dynamically load data into context at runtime using tools."
 
-That is exactly the hub-and-spoke pattern: pointers at the hub, content on demand. Progressive disclosure, in Anthropic's framing, is context engineering made concrete.
+That is exactly this pattern: lightweight pointers in the always-loaded file, full content loaded on demand. Progressive disclosure, in Anthropic's framing, is context engineering made concrete.
 
 ## Trade-Offs and Tensions
 
@@ -66,7 +66,7 @@ Like any design principle, progressive disclosure involves trade-offs. Understan
 
 **Explicit triggers vs. retrieval.** Progressive disclosure relies on human-written triggers in `AGENTS.md` pointing to documents. An alternative is embedding-based retrieval (RAG), where the system searches a knowledge base at inference time. Triggers add authoring burden but are explicit and deterministic. Retrieval is automatic but introduces infrastructure, relevance risk, and adds latency. Anthropic distinguishes the two: "just-in-time" loading (triggers) vs. "embedding-based pre-inference retrieval." Both can work; they trade off simplicity against automation.
 
-**Discoverability vs. minimalism.** A lean hub is cleaner and cheaper. But a team that knows `AGENTS.md` is short may not *look* for a trigger to something they need. By contrast, a rich hub makes everything visible—but at the cost of context bloat and the very problem we are trying to solve. The practical answer is better triggers and observability. The emoji verification trick addresses this: each knowledge document emits an emoji when read, so a facilitator can *see* in the output which documents were actually loaded. If the agent skipped one you expected, you iterate on the trigger wording in `AGENTS.md` and rerun. Discoverability is not solved by bloat; it is solved by clarity and feedback.
+**Discoverability vs. minimalism.** A lean `AGENTS.md` is cleaner and cheaper. But a team that knows `AGENTS.md` is short may not *look* for a trigger to something they need. By contrast, a fat `AGENTS.md` makes everything visible—but at the cost of context bloat and the very problem we are trying to solve. The practical answer is better triggers and observability. The emoji verification trick addresses this: each knowledge document emits an emoji when read, so a facilitator can *see* in the output which documents were actually loaded. If the agent skipped one you expected, you iterate on the trigger wording in `AGENTS.md` and rerun. Discoverability is not solved by bloat; it is solved by clarity and feedback.
 
 **The failure mode—under-disclosure.** When lazy loading fails, it is usually because the agent skipped a needed document or routed to the wrong one. This failure mode—under-disclosure—is the central risk. The mitigation is not to "load everything" (that defeats the point) but to invest in better triggers and observability so you *see* when under-disclosure occurs and fix it through iteration.
 

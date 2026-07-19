@@ -199,8 +199,8 @@ they'll practice.
 **Phase:** Concept (the core idea, visualised) · **⏱️ 3 min**
 
 This frame is the conceptual centrepiece: **"Progressive Disclosure: Minimize Context."**
-It shows a hub-and-spoke model where `AGENTS.md` & the harness sit at the centre and knowledge
-documents are read *on demand*.
+It shows how `AGENTS.md` & the harness stay small — holding only triggers and pointers — while the
+knowledge documents are read *on demand*.
 
 **Documents loaded only when needed:** Test Design Advice, Class Design Advice,
 Commit Message Advice, and `AGENTS.md` itself.
