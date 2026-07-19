@@ -159,5 +159,3 @@ Reputation: High: 5 | Medium-High: 2 | Medium: 1 | Avg ≈ 0.85.
 
 ## 8. Research Metadata
 Examined: ~15 candidate sources | Cited: 8 | Cross-refs: core claims C1–C6, C9–C11 multi-source; C7–C8 single-vendor (flagged) | Confidence: High on origins + mechanism; Medium on project-specific numbers | Output: docs/research/progressive-disclosure-for-explanation-doc.md
-</content>
-</invoke>
