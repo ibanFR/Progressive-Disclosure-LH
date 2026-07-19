@@ -35,6 +35,9 @@ callouts:
 # Jekyll appends its own default excludes (Gemfile, caches, vendor/, …).
 exclude:
   - harness/
+  - AGENTS.md
+  - CLAUDE.md
+  - start_local_server.sh
 
 defaults:
   # All regular Jekyll pages

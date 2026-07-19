@@ -1,4 +1,4 @@
-Stack replies with: 📄
+Stack replies with: 🧐
 
 Regenerate docs with the `/nw-document` pipeline rather than hand-editing where a matching artifact exists.
 
