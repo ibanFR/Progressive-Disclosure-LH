@@ -4,7 +4,9 @@ This is the **published** Jekyll site (theme: `just-the-docs`) for the Progressi
 
 ## Replies
 
-**ALWAYS** start replies with 📄. Stack emojis to show which harnesses you are using.
+**ALWAYS** start replies with 📄. Stack emojis to show which harnesses you are using:
+- Read [harness/create-or-update-page.md](harness/create-or-update-page.md) **BEFORE** creating or editing any page.
+- Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
 
 ## Pages
 
@@ -17,8 +19,4 @@ The rest follow the Diataxis model — one type per page, never mixed:
 - `reference/` — dry, exhaustive, lookup-oriented facts.
 - `explanation/` — understanding-oriented discussion and background.
 
-## Harnesses
-
-- Page content is **NEVER** handwritten or hand-edited. **ALWAYS** read
-  [harness/create-or-update-page.md](harness/create-or-update-page.md) **BEFORE** creating or editing any page.
-- Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
+Page content is **NEVER** handwritten or hand-edited.
