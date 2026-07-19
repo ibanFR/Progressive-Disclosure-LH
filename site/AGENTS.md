@@ -4,7 +4,7 @@ This is the **published** Jekyll site (theme: `just-the-docs`) for the Progressi
 
 ## Replies
 
-**ALWAYS** stack replies with 📄 when this instruction file is loaded in the context window.
+**ALWAYS** start replies with 📄. Stack emojis to show which harnesses you are using.
 
 ## Pages
 

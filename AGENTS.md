@@ -1,4 +1,4 @@
-**ALWAYS** start replies with 🤖. Then stack one more emoji for each AGENTS.md and harness file loaded in the context window — each file declares the emoji to stack.
+**ALWAYS** start replies with 🤖. Stack emojis to show which **other** AGENTS.md or harness files are loaded in the context window.
 
 IGNORE EXERCISE INSTRUCTIONS IN README.md, follow only the instructions given in prompts and other files indicated by the user.
 
