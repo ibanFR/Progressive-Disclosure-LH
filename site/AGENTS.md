@@ -4,9 +4,9 @@ This is the **published** Jekyll site (theme: `just-the-docs`) for the Progressi
 
 ## Replies
 
-**ALWAYS** start replies with 📄. Stack emojis to show which harnesses you are using:
+- Add 📄 to STARTER_CHARACTER emojis
 - Read [harness/create-or-update-page.md](harness/create-or-update-page.md) **BEFORE** creating or editing any page.
-- Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
+- Read [harness/preview-site.md](harness/preview-site.md) to preview the site locally.
 
 ## Pages
 

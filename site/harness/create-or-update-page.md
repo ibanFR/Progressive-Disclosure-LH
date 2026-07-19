@@ -1,4 +1,4 @@
-Stack replies with 🧐 when this harness is loaded in the context window.
+Add ✏️ to STARTER_CHARACTER emojis.
 
 Always create or update a page with the `/nw-document` pipeline — never hand-write or hand-edit page content. This applies to both new pages and changes to existing ones.
 
