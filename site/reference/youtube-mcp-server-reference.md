@@ -33,7 +33,7 @@ Lookup reference for the `youtube` MCP server registered in this repository.
 | Config file | `.mcp.json` (project root) |
 | Backing API | [YouTube Data API v3](https://developers.google.com/youtube/v3) |
 | Tools | 10 read/search tools (no write) |
-| Install guide | [Install the YouTube MCP Server](../how-to/youtube-mcp-server-guide.html) |
+| Install guide | [Install the YouTube MCP Server]({% link how-to/youtube-mcp-server-guide.md %}) |
 
 ## Configuration
 
@@ -55,7 +55,7 @@ The `.mcp.json` entry maps your shell environment variables into the server's pr
 - Your shell exports `YOUTUBE_API_TOKEN` (export `YOUTUBE_API_TOKEN="your-key"` in `~/.zshrc` or `~/.bashrc`).
 - Claude Code expands `${YOUTUBE_API_TOKEN}` and injects its value as `YOUTUBE_API_KEY` at startup.
 
-**Common error**: If you export `YOUTUBE_API_KEY` directly instead of `YOUTUBE_API_TOKEN`, Claude Code will not map it correctly and the server will fail. See the [install guide](../how-to/youtube-mcp-server-guide.html) for details.
+**Common error**: If you export `YOUTUBE_API_KEY` directly instead of `YOUTUBE_API_TOKEN`, Claude Code will not map it correctly and the server will fail. See the [install guide]({% link how-to/youtube-mcp-server-guide.md %}) for details.
 
 ### Fallback keys (optional)
 

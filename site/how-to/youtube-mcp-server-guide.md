@@ -158,11 +158,11 @@ Then update `.mcp.json`:
 }
 ```
 
-At least one key must be set; the others are optional. See the [YouTube MCP Server reference](../reference/youtube-mcp-server-reference.html) for quota limits and cost details.
+At least one key must be set; the others are optional. See the [YouTube MCP Server reference]({% link reference/youtube-mcp-server-reference.md %}) for quota limits and cost details.
 
 ## Using the server
 
-Once installed, you can query YouTube via natural language. Copy-paste these starting prompts and replace IDs or search terms as needed. See the [YouTube MCP Server reference](../reference/youtube-mcp-server-reference.html) for the full tool catalog and extended parameters.
+Once installed, you can query YouTube via natural language. Copy-paste these starting prompts and replace IDs or search terms as needed. See the [YouTube MCP Server reference]({% link reference/youtube-mcp-server-reference.md %}) for the full tool catalog and extended parameters.
 
 **Find videos about a topic:**
 "Find the 5 most-viewed YouTube videos about 'retrieval augmented generation' published after January 2025, and skip duplicate channels."
@@ -196,4 +196,4 @@ Once installed, you can query YouTube via natural language. Copy-paste these sta
 
 ## What's next
 
-To understand quota costs, the full parameter list for each tool, and how to locate IDs in YouTube URLs, see the [YouTube MCP Server reference](../reference/youtube-mcp-server-reference.html).
+To understand quota costs, the full parameter list for each tool, and how to locate IDs in YouTube URLs, see the [YouTube MCP Server reference]({% link reference/youtube-mcp-server-reference.md %}).
