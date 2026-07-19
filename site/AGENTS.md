@@ -4,7 +4,7 @@ This is the **published** Jekyll site (theme: `just-the-docs`) for the Progressi
 
 ## Replies
 
-Stack replies with 📄 when this instruction file is loaded in the context window.
+**ALWAYS** stack replies with 📄 when this instruction file is loaded in the context window.
 
 ## Pages
 
@@ -12,12 +12,16 @@ Stack replies with 📄 when this instruction file is loaded in the context wind
 
 The rest follow the Diataxis model — one type per page, never mixed:
 
-* `tutorial/` — learning-oriented lessons for a newcomer.
-* `how-to/` — task-oriented guides for a user with a goal.
-* `reference/` — dry, exhaustive, lookup-oriented facts.
-* `explanation/` — understanding-oriented discussion and background.
+- `tutorial/` — learning-oriented lessons for a newcomer.
+- `how-to/` — task-oriented guides for a user with a goal.
+- `reference/` — dry, exhaustive, lookup-oriented facts.
+- `explanation/` — understanding-oriented discussion and background.
+
+Page content is **never hand-written or hand-edited** — every new page and every
+change to an existing one goes through the `/nw-document` pipeline (see **Harnesses**).
 
 ## Harnesses
 
-* Read [harness/create-or-update-page.md](harness/create-or-update-page.md) when creating or updating a page.
-* Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
+- **Before** creating or editing any page you **MUST** first read
+  [harness/create-or-update-page.md](harness/create-or-update-page.md) and follow it.
+- Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
