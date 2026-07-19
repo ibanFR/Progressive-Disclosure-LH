@@ -19,8 +19,5 @@ The rest follow the Diataxis model — one type per page, never mixed:
 
 ## Harnesses
 
-Read [harness/create-page.md](harness/create-page.md) when creating or updating a page.
-
-## Preview the site
-
-Preview locally: `./start_local_server.sh` → http://localhost:4000
+* Read [harness/create-page.md](harness/create-page.md) when creating or updating a page.
+* Read [harness/preview-site.md](harness/preview-site.md) when previewing the site locally.
