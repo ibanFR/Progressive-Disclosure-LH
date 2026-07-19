@@ -51,3 +51,55 @@ produced the following files under `docs/`:
 Note: these `docs/` files are distinct from the published Jekyll site pages under `site/`
 (`site/how-to/youtube-mcp-server-guide.md`, `site/reference/youtube-mcp-server-reference.md`),
 which cover the same topic and were created in prompts 1–10.
+
+---
+
+# Documentation Session Prompts — Session 2 (2026-07-19)
+
+A verbatim record of the user prompts from the second documentation session, in order.
+
+1. `/nw-document document the new youtube mcp server, including github repository, installation instructions, api key, and sample prompts.`
+
+   Claude found the docs already existed and asked one follow-up; user answer:
+   - **The docs already exist and cover all four items — what do you want me to do?** → Regenerate via pipeline (run the full four-phase pipeline, overwriting the existing docs).
+
+2. fix notes 1-2
+
+   (Refers to two non-blocking notes Claude raised at handoff: (1) append the reference
+   reviewer's YAML block to the reference `.validation.yaml`; (2) align the fallback env
+   var naming between the how-to and reference docs.)
+
+3. `/nw-buddy why did the yaml files where generated in the site folder instead of /docs?`
+
+4. `/nw-buddy leaving validation artifacts in the site folder may have an impact with jekyll static site generation. does it not?`
+
+5. document the prompts of this session to @../harness/documentation-prompts.md
+
+## Generated / modified output — Session 2
+
+The `/nw-document` command (prompt 1) re-ran the four-phase research → review → author →
+review pipeline (agents: nw-researcher, nw-researcher-reviewer, nw-documentarist ×2,
+nw-documentarist-reviewer ×2). The research gate needed one revision cycle
+(NEEDS_REVISION → APPROVED); both documentation gates returned APPROVED on the first
+iteration. Files:
+
+- `docs/research/youtube-mcp-server-for-howto-reference-doc.md` — cited research feeding
+  both docs (8 trusted sources; Research Review APPROVED at iteration 2). Surfaced a new
+  verified fact: the server supports optional `YOUTUBE_API_KEY2`/`YOUTUBE_API_KEY3`
+  fallback keys with quota-exhaustion retry.
+- `site/how-to/youtube-mcp-server-guide.md` — regenerated DIVIO HOW-TO (type purity 95%;
+  Doc Review APPROVED). Overwrote the existing file.
+- `site/reference/youtube-mcp-server-reference.md` — regenerated DIVIO REFERENCE
+  (type purity 95%, overall 9.08/10; Doc Review APPROVED). Overwrote the existing file.
+- `site/how-to/youtube-mcp-server-guide.md.validation.yaml` and
+  `site/reference/youtube-mcp-server-reference.md.validation.yaml` — validation reports.
+
+Prompt 2 appended the reference reviewer's review block to the reference `.validation.yaml`
+and aligned the fallback env var naming in the how-to (`YOUTUBE_API_TOKEN_2/3` shell vars
+→ `YOUTUBE_API_KEY2/3` server slots).
+
+Prompts 3–4 (nw-buddy Q&A) surfaced a known issue, not yet fixed as of this record: the
+two `.validation.yaml` files sit under `site/`, and Jekyll copies them verbatim into the
+built `_site/` output (confirmed in `_site/how-to/` and `_site/reference/`), so they would
+be publicly served on the GitHub Pages site. Recommended remediation (pending user
+decision): move the validation artifacts out of `site/` into the `docs/` tree.
