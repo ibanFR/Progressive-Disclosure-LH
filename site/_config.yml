@@ -31,6 +31,11 @@ callouts:
     title: Warning
     color: red
 
+# Kept in the repo but not built into the published site.
+# Jekyll appends its own default excludes (Gemfile, caches, vendor/, …).
+exclude:
+  - harness/
+
 defaults:
   # All regular Jekyll pages
   - scope:
