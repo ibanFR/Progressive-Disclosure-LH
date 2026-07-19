@@ -123,6 +123,7 @@ See [Conclusions Activities](https://sammancoaching.org/activities/conclusions.h
 - [Miro board](https://miro.com/app/board/uXjVHPh12To=/)
 - [Progressive-Disclosure-LH exercise repository](https://github.com/ibanFR/Progressive-Disclosure-LH)
 - [Encode-TestDesign-Kata](https://github.com/emilybache/Encode-TestDesign-Kata) by Emily Bache
+- [Harness Engineering](https://www.youtube.com/watch?v=JaiJ5wxdmCA) — Emily Bache (video) on guides, sensors, and the improvement flywheel for agentic AI
 - [Learning Hour](https://sammancoaching.org/reference/learning_hour_definition.html)
 - [Connect](https://sammancoaching.org/activities/connect.html) · [Concept](https://sammancoaching.org/activities/concept.html) · [Concrete Practice](https://sammancoaching.org/activities/concrete.html) · [Conclusions](https://sammancoaching.org/activities/conclusions.html) Activities
 - [Samman Coaching](https://sammancoaching.org/)
