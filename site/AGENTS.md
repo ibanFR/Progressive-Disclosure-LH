@@ -8,8 +8,6 @@ Pages follow the DIVIO/Diataxis model — keep each page to one type and do not 
 * `reference/` — dry, exhaustive, lookup-oriented facts.
 * `explanation/` — understanding-oriented discussion and background.
 
-Parent pages (`has_children: true`) get an automatic child-page table of contents from just-the-docs — don't add `{: .no_toc }` or a manual TOC to them.
-
 When creating or updating a document: harness/create-document.md
 
 Preview locally: `./start_local_server.sh` → http://localhost:4000
