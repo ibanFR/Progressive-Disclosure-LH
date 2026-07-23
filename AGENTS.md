@@ -1,4 +1,4 @@
-**ALWAYS** start replies with STARTER_CHARACTER (default: 🤖) + space. Stack emojis when requested, don't replace.
+Start EVERY reply with 🤖 followed by a space — no exceptions, including errors, refusals, and one-word answers. A nested `AGENTS.md` or a harness file may call for more emojis; append each to the end of the stack (never replace 🤖) so the prefix traces the files that applied.
 
 IGNORE EXERCISE INSTRUCTIONS IN README.md, follow only the instructions given in prompts and other files indicated by the user.
 

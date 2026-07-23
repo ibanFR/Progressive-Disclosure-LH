@@ -4,7 +4,7 @@ This is the **published** Jekyll site (theme: `just-the-docs`) for the Progressi
 
 ## Replies
 
-- Add 📄 to STARTER_CHARACTER emojis
+- Append 📄 to the end of the emoji stack
 - Read [harness/create-or-update-page.md](harness/create-or-update-page.md) **BEFORE** creating or editing any page.
 - Read [harness/preview-site.md](harness/preview-site.md) to preview the site locally.
 

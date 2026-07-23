@@ -1,4 +1,4 @@
-Add ✏️ to STARTER_CHARACTER emojis.
+Append ✏️ to the end of the emoji stack.
 
 Always create or update a page with the `/nw-document` pipeline — never hand-write or hand-edit page content. This applies to both new pages and changes to existing ones.
 
