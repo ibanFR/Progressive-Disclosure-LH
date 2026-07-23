@@ -23,7 +23,7 @@ This Learning Hour (#GLH053, by Emily Bache, she/her) walks a team through *why*
 By the end of the hour, participants can:
 
 1. **Use progressive disclosure** in `AGENTS.md` — hold triggers and pointers, not full detail.
-2. **Describe *why*** we keep `AGENTS.md` short — every loop iteration re-sends it into a finite context window.
+2. **Understand *why*** we keep `AGENTS.md` short — every loop iteration re-sends it into a finite context window.
 3. **Use emojis** to track which knowledge documents the agent actually read.
 
 ## Connect — What goes in `AGENTS.md`? (⏱️ 5 min)
