@@ -80,20 +80,24 @@ we'll return to it when we talk about keeping `AGENTS.md` short.
 First concept slide. Give the participants a concrete, evidence-backed guideline for
 `AGENTS.md`.
 
-**Key point:** **100–150 lines is optimal** for an `AGENTS.md` file.
+**On the frame** (read it out):
 
-**Supporting evidence to share:** A well-written `AGENTS.md` can deliver value comparable
-to a model upgrade — the best files improve agent performance by roughly **10–15%** over
-teams with no such documentation (source: the
-[Augment Code blog](https://www.augmentcode.com/)).
+> A well-written `AGENTS.md` is worth roughly a model upgrade, with the best files lifting
+> performance 10–15% over teams running no file at all.
+
+**Supporting evidence to share:** That line comes from Augment Code's blog post,
+[*"A good `AGENTS.md` is a model upgrade"*](https://www.augmentcode.com/blog/how-to-write-good-agents-dot-md-files).
+The experiment: run real coding tasks **twice — with and without an `AGENTS.md`** — then score
+each result against the **golden PR**, the version that actually landed after review by multiple
+senior engineers.
+
+**Key point:** Top performers were **100–150 line `AGENTS.md` files paired with a handful
+of focused reference documents** — a short entry point plus a few docs the agent pulls in when
+needed.
 
 **Facilitator notes:**
 
-- Tie this back to the Connect activity: the group just generated *far more* than 150 lines
-  worth of ideas. That tension — "everything is useful" vs. "keep it short" — is exactly what
-  progressive disclosure resolves.
-- Pose the question the rest of the session answers: *if we can't put everything in `AGENTS.md`,
-  where does the rest go, and when does the agent read it?*
+- Attribute it as *their* finding: it's a vendor's internal eval, not peer-reviewed research.
 
 ---
 
