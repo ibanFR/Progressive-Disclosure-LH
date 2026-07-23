@@ -97,7 +97,13 @@ needed.
 
 **Facilitator notes:**
 
-- Attribute it as *their* finding: it's a vendor's internal eval, not peer-reviewed research.
+- **If asked "who's Augment Code and why trust them?":** they build an enterprise AI coding
+  agent (customers include Spotify, MongoDB, Snyk), founded by an ex-Google AI researcher, and
+  their agent has topped independent SWE-bench leaderboards — so they run serious agent evals,
+  not marketing benchmarks. The golden-PR method here (scoring against code that passed senior
+  review) is a real, defensible measure.
+- Still attribute it as *their* finding: credible and directional, but a vendor's internal eval
+  with a commercial interest — not independent, peer-reviewed research.
 
 ---
 
