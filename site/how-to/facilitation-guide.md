@@ -9,11 +9,13 @@ nav_order: 1
 {: .no_toc }
 
 A frame-by-frame guide for facilitating the **Progressive Disclosure** Learning Hour
-(#GLH053, by Emily Bache). Each section below corresponds to one frame on the
-[Miro board](https://miro.com/app/board/uXjVHPh12To=/), in left-to-right presentation
-order. The session follows the [Learning Hour](https://sammancoaching.org/reference/learning_hour_definition.html)
-4C structure: **Connect → Concept → Concrete → Conclusions**.
+(#GLH053, by Emily Bache). 
 {: .fs-6 .fw-300 }
+
+Each section below corresponds to one frame on the
+[Miro board](https://miro.com/app/board/uXjVHPh12To=/), in left-to-right presentation order. The session follows
+the [Learning Hour](https://sammancoaching.org/reference/learning_hour_definition.html)
+4C structure: **Connect → Concept → Concrete → Conclusions**.
 
 ## Table of Contents
 {: .no_toc .text-delta }
@@ -33,7 +35,7 @@ the three learning objectives shown on the slide.
 **Learning objectives to read out:**
 
 - Use progressive disclosure in `AGENTS.md`.
-- Describe *why* we keep `AGENTS.md` short.
+- Understand *why* we keep `AGENTS.md` short.
 - Use emojis to track which knowledge documents the agent actually used.
 
 **Facilitator notes:**
